@@ -11,15 +11,15 @@ We tested two join strategies when merging air quality and climate data on
 
 The outer join preserved a much larger row count, but retained large numbers of
 weather-only records with no corresponding air quality reading (94.7% missing on
-PM2.5). We selected the inner join, prioritizing analytical validity — a smaller
-dataset where nearly every row is usable — over a larger but mostly incomplete one.
+PM2.5). We selected the inner join, prioritizing analytical validity - a smaller
+dataset where nearly every row is usable, over a larger but mostly incomplete one.
 
 ## Columns Removed and Why
-- **`o3` (ozone):** Dropped. Values were invalid — mean of -0.44 ppm with a range of
+- **`o3` (ozone):** Dropped. Values were invalid - mean of -0.44 ppm with a range of
   -0.999 to 0.076, which is physically impossible (ozone cannot be negative). This
   points to a sensor calibration or unit-conversion issue at the source, not a
   correctable outlier.
-- **`pm10`:** Dropped. 93.3% missing — reported by too few stations to be usable.
+- **`pm10`:** Dropped. 93.3% missing - reported by too few stations to be usable.
 - **`relativehumidity`, `temperature` (from air quality sensors):** Dropped.
   ~42–44% missing and redundant with equivalent, more complete columns already
   sourced from NASA POWER (`humidity`, `temperature`).
@@ -27,16 +27,16 @@ dataset where nearly every row is usable — over a larger but mostly incomplete
   core pollutant metrics.
 
 ## Columns Retained
-- `pm25` — primary pollutant metric, 93.1% complete (6.9% missing, explained by
-  station sensor type — not all stations measure PM2.5).
-- `pm1` — kept as an optional secondary metric from low-cost sensor stations only,
+- `pm25` - primary pollutant metric, 93.1% complete (6.9% missing, explained by
+  station sensor type - not all stations measure PM2.5).
+- `pm1` - kept as an optional secondary metric from low-cost sensor stations only,
   55.8% missing. Used selectively, not in core charts.
 
 ## Validation Checks Performed
 - **Duplicates:** 0 exact duplicate rows; 0 duplicate station+date combinations.
 - **Negative values:** 0 negative readings across temperature, rainfall, humidity,
   PM2.5, and PM1 after dropping the invalid O3 column.
-- **Humidity range:** 0 values outside the valid 0–100% range.
+- **Humidity range:** 0 values outside the valid 0-100% range.
 - **Precipitation sanity check:** Monthly averages follow Nepal's known monsoon
   pattern (July 11.7mm and August 9.6mm as wettest; December 0.04mm and January
   0.04mm as driest), confirming the climate data reflects real seasonal patterns

@@ -14,9 +14,9 @@
 - **Source:** NASA Prediction of Worldwide Energy Resources (POWER) API
   (https://power.larc.nasa.gov)
 - **Parameters used:**
-  - T2M — Temperature at 2 meters (°C)
-  - PRECTOTCORR — Corrected total precipitation (mm/day)
-  - RH2M — Relative humidity at 2 meters (%)
+  - T2M - Temperature at 2 meters (°C)
+  - PRECTOTCORR - Corrected total precipitation (mm/day)
+  - RH2M - Relative humidity at 2 meters (%)
 - **Coverage:** Pulled for the same coordinates as air quality stations (deduplicated
   by rounded lat/lon), daily, 2021–2025
 - **Note:** Used in place of NOAA/ICIMOD (suggested in module brief) as a freely
